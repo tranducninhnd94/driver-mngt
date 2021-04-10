@@ -143,6 +143,7 @@ class HomeComponent extends Component {
 
                 //load data
                 this.loadDataTable(objectNameSelected);
+                this.setState({ isCreatingModalVisible: false });
             }).catch(error => {
                 console.log("error: ", error);
             })
@@ -157,6 +158,7 @@ class HomeComponent extends Component {
 
                 //load data
                 this.loadDataTable(objectNameSelected);
+                this.setState({ isUpdatingModalVisible: false });
 
             }).catch(error => {
                 console.log("error: ", error);
