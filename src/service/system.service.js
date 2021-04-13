@@ -5,7 +5,8 @@ export const systemService = {
     createObject,
     updateObject,
     deleteObject,
-    loadOneObject
+    loadOneObject,
+    searchData
 
 }
 
@@ -74,6 +75,21 @@ function loadOneObject(objectName, id) {
             'Content-Type': 'application/json',
             'X-Device-Identifier': navigator.userAgent,
             ...authHeader()
+        }
+    };
+    return api(requestOptions);
+}
+
+function searchData(requestParams) {
+    const requestOptions = {
+        method: 'GET',
+        url: `/api/v1/data`,
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Device-Identifier': navigator.userAgent
+        },
+        params: {
+            ...requestParams
         }
     };
     return api(requestOptions);

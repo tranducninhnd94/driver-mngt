@@ -13,7 +13,7 @@ function App() {
       <Row style={{ marginTop: '64px' }}>
         <Col offset={3} span={18}>
           <Button type="link" onClick={() => history.push("/")}>Home </Button>
-          <Button type="link" onClick={() => history.push("/driver")}>Driver  </Button>
+          <Button type="link" onClick={() => history.push("/driver")}>Driver</Button>
         </Col>
       </Row>
 
