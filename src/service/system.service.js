@@ -12,15 +12,13 @@ export const systemService = {
 
 function loadObject(objectName, requestParams) {
     const requestOptions = {
-        method: 'GET',
-        url: `/api/v1/object/${objectName}`,
+        method: 'POST',
+        url: `/api/v1/search`,
         headers: {
             'Content-Type': 'application/json',
             'X-Device-Identifier': navigator.userAgent
         },
-        params: {
-            ...requestParams
-        }
+        data: JSON.stringify({ type: objectName, ...requestParams })
     };
     return api(requestOptions);
 }
@@ -29,7 +27,7 @@ function loadObject(objectName, requestParams) {
 function createObject(body) {
     const requestOptions = {
         method: 'POST',
-        url: `/api/v1/object`,
+        url: `/add`,
         headers: {
             'Content-Type': 'application/json',
             'X-Device-Identifier': navigator.userAgent,
@@ -42,8 +40,8 @@ function createObject(body) {
 
 function updateObject(body) {
     const requestOptions = {
-        method: 'PUT',
-        url: `/api/v1/object`,
+        method: 'POST',
+        url: `/update`,
         headers: {
             'Content-Type': 'application/json',
             'X-Device-Identifier': navigator.userAgent,
@@ -56,13 +54,14 @@ function updateObject(body) {
 
 function deleteObject(objectName, id) {
     const requestOptions = {
-        method: 'DELETE',
-        url: `/api/v1/object/${objectName}/${id}`,
+        method: 'POST',
+        url: `/delete`,
         headers: {
             'Content-Type': 'application/json',
             'X-Device-Identifier': navigator.userAgent,
             ...authHeader()
-        }
+        },
+        data: JSON.stringify({ objectName, id })
     };
     return api(requestOptions);
 }
@@ -82,15 +81,13 @@ function loadOneObject(objectName, id) {
 
 function searchData(requestParams) {
     const requestOptions = {
-        method: 'GET',
-        url: `/api/v1/data`,
+        method: 'POST',
+        url: `/search/data`,
         headers: {
             'Content-Type': 'application/json',
             'X-Device-Identifier': navigator.userAgent
         },
-        params: {
-            ...requestParams
-        }
+        data: JSON.stringify(requestParams)
     };
     return api(requestOptions);
 }
