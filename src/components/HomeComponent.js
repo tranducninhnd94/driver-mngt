@@ -125,8 +125,8 @@ class HomeComponent extends Component {
         ];
 
         systemService.loadObject(objectName, requestParams)
-            .then(result => {
-                data = result;
+            .then(response => {
+                data = response.data.data;;
             }).catch(error => {
                 console.log("error: ", error);
             })
@@ -200,19 +200,18 @@ class HomeComponent extends Component {
             }
         }
 
-        this.setState({requestParams});
+        this.setState({ requestParams });
 
         let data = [];
         const { objectNameSelected } = this.state;
 
         systemService.loadObject(objectNameSelected, body)
-            .then(result => {
-                data = result;
+            .then(response => {
+                data = response.data.data;
+                this.setState({ data });
             }).catch(error => {
                 console.log("error: ", error);
             })
-
-        this.setState({ data });
     }
 
     render() {

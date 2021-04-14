@@ -66,7 +66,7 @@ class DriverComponent extends Component {
 
         systemService.searchData(requestParams)
             .then(response => {
-                data = response.data;
+                data = response.data.data;
                 this.setState({data});
             }).catch(error => {
                 console.log("error: ", error);
